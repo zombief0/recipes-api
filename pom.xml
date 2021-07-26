@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.norman</groupId>
     <artifactId>recipes</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>recipes</name>
     <description>Demo project for Spring Boot</description>
     <properties>
@@ -28,6 +28,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.14.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -69,6 +74,7 @@
     </dependencies>
 
     <build>
+        <finalName>recipe</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
