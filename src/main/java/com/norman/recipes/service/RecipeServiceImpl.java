@@ -2,6 +2,7 @@ package com.norman.recipes.service;
 
 import com.norman.recipes.domain.entities.Recipe;
 import com.norman.recipes.domain.repositories.RecipeRepository;
+import com.norman.recipes.service.dto.RecipeDetail;
 import com.norman.recipes.service.dto.RecipeDto;
 import com.norman.recipes.service.dto.RecipeDtoList;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,5 +32,11 @@ public class RecipeServiceImpl implements RecipeService {
                 recipePage.getSize(),
                 recipePage.getTotalPages(),
                 recipePage.getTotalElements());
+    }
+
+    @Override
+    public RecipeDetail findById(Long id) {
+        Optional<Recipe> optionalRecipe = recipeRepository.findById(id);
+        return optionalRecipe.map(RecipeDetail::new).orElse(null);
     }
 }
