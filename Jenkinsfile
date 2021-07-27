@@ -30,6 +30,8 @@ node {
 
        stage('Run docker container') {
                sh "docker image prune -a -f"
+               sh "docker container stop recipe-api"
+               sh "docker container rm recipe-api"
                sh "docker container run -d -e VIRTUAL_HOST=apirecipe.normanmbouende.com --name recipe-api zombief0/recipe-api:${commit_id}"
        }
 
