@@ -22,6 +22,7 @@ public class DBInit implements CommandLineRunner {
     public void run(String... args) throws Exception {
         if (utilisateurRepository.findAll().size() == 0){
             Utilisateur utilisateur = new Utilisateur();
+            utilisateur.setNom("Norman");
             utilisateur.setEmail("mbouendenorman@gmail.com");
             utilisateur.setPassword(passwordEncoder.encode("explorerNate125"));
             utilisateur.setRole("ADMIN");
