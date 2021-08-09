@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/recipe")
 @RequiredArgsConstructor
-@CrossOrigin(origins = {"http://localhost:4200", "https://recipe.normanmbouende.com/"})
+@CrossOrigin(origins = "*")
 public class RecipeController {
     private final RecipeService recipeService;
 
