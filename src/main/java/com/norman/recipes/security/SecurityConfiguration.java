@@ -31,7 +31,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .cors()
+                .cors().configurationSource(corsConfigurationSource())
                 .and()
                 .csrf()
                 .disable()
@@ -41,6 +41,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), utilisateurService))
                 .authorizeRequests()
                 .antMatchers("/login").permitAll()
+                .antMatchers("/api/recipe").permitAll()
+                .antMatchers("/api/recipe/**").permitAll()
                 .antMatchers("/api/test").authenticated();
     }
 
@@ -60,11 +62,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Collections.singletonList("*"));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:8080", "https://apirecipe.normanmbouende.com/"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "OPTIONS", "DELETE", "PUT", "PATCH"));
-        configuration.setExposedHeaders(Collections.singletonList("Authorization"));
         configuration.setAllowedHeaders(Arrays.asList("X-Requested-With", "Origin", "Content-Type", "Accept", "Authorization"));
-        configuration.setAllowCredentials(true);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
