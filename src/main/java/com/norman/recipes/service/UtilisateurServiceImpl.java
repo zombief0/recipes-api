@@ -14,11 +14,13 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return null;
+        return utilisateurRepository
+                .findByEmail(s)
+                .orElseThrow(() -> new UsernameNotFoundException("Utilisateur " + s + "invalide"));
     }
 
     @Override
     public Utilisateur findByEmail(String username) {
-        return utilisateurRepository.findByEmail(username);
+        return utilisateurRepository.findByEmail(username).orElse(null);
     }
 }
