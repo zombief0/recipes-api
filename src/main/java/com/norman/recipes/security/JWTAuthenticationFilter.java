@@ -52,7 +52,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         AuthResponse authResponse = new AuthResponse(token,
                 SecurityProperties.EXPIRES_IN,
                 utilisateur.getRole(),
-                utilisateur.getUsername());
+                utilisateur.getUsername(), utilisateur.getId());
         String jsonAuthResponse = new ObjectMapper().writeValueAsString(authResponse);
         PrintWriter printWriter = response.getWriter();
         response.setContentType("application/json");
