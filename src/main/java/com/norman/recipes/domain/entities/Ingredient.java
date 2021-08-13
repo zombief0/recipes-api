@@ -1,5 +1,6 @@
 package com.norman.recipes.domain.entities;
 
+import com.norman.recipes.service.dto.IngredientDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,4 +20,9 @@ public class Ingredient extends BaseEntity{
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Recipe recipe;
+
+    public Ingredient (IngredientDto ingredientDto){
+        this.name = ingredientDto.getName();
+        this.amount = ingredientDto.getAmount();
+    }
 }

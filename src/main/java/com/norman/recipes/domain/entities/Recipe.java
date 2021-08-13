@@ -1,5 +1,6 @@
 package com.norman.recipes.domain.entities;
 
+import com.norman.recipes.service.dto.RecipeSaveDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,4 +29,10 @@ public class Recipe extends BaseEntity{
 
     @ManyToOne
     private Utilisateur utilisateur;
+
+    public Recipe(RecipeSaveDto recipeSaveDto){
+        this.name = recipeSaveDto.getName();
+        this.description = recipeSaveDto.getDescription();
+        this.imagePath = recipeSaveDto.getImagePath();
+    }
 }

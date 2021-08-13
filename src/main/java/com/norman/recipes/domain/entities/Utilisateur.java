@@ -1,5 +1,6 @@
 package com.norman.recipes.domain.entities;
 
+import com.norman.recipes.service.dto.UtilisateurDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -35,6 +36,13 @@ public class Utilisateur extends BaseEntity implements UserDetails {
 
     @OneToMany(mappedBy = "utilisateur", cascade = {CascadeType.REFRESH, CascadeType.MERGE})
     private List<Recipe> recipes = new ArrayList<>();
+
+    public Utilisateur(UtilisateurDto utilisateurDto){
+        this.role = "USER";
+        this.nom = utilisateurDto.getNom();
+        this.email = utilisateurDto.getEmail();
+        this.password = utilisateurDto.getPassword();
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
