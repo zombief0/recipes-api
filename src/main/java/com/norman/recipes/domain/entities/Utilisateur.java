@@ -38,6 +38,7 @@ public class Utilisateur extends BaseEntity implements UserDetails {
     private List<Recipe> recipes = new ArrayList<>();
 
     public Utilisateur(UtilisateurDto utilisateurDto){
+        this.active = true;
         this.role = "USER";
         this.nom = utilisateurDto.getNom();
         this.email = utilisateurDto.getEmail();

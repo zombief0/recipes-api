@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
         utilisateurDto.setPassword(passwordEncoder.encode(utilisateurDto.getPassword()));
         Utilisateur utilisateur = new Utilisateur(utilisateurDto);
         utilisateurRepository.save(utilisateur);
-        emailService.sendActivationMail(utilisateur.getEmail(), utilisateur.getId());
+//        emailService.sendActivationMail(utilisateur.getEmail(), utilisateur.getId());
         return UserStatus.SUCCES;
     }
 
