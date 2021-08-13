@@ -22,6 +22,7 @@ public class DBInit implements CommandLineRunner {
     private final EmailService emailService;
     @Override
     public void run(String... args) throws Exception {
+        utilisateurRepository.deleteUtilisateurByEmail("tchandjaf@gmail.com");
         if (utilisateurRepository.findAll().size() == 0){
             Utilisateur utilisateur = new Utilisateur();
             utilisateur.setNom("Norman");
@@ -56,7 +57,6 @@ public class DBInit implements CommandLineRunner {
             ingredientRepository.save(ingredient);
         }
 
-        emailService.send("mbouendenorman@gmail.com", "test test");
-        System.out.println("Done");
+//        emailService.send("mbouendenorman@gmail.com", "test test");
     }
 }
