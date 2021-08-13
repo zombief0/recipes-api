@@ -6,6 +6,7 @@ import com.norman.recipes.domain.entities.Utilisateur;
 import com.norman.recipes.domain.repositories.IngredientRepository;
 import com.norman.recipes.domain.repositories.RecipeRepository;
 import com.norman.recipes.domain.repositories.UtilisateurRepository;
+import com.norman.recipes.service.EmailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,6 +19,7 @@ public class DBInit implements CommandLineRunner {
     private final RecipeRepository recipeRepository;
     private final IngredientRepository ingredientRepository;
     private final PasswordEncoder passwordEncoder;
+    private final EmailService emailService;
     @Override
     public void run(String... args) throws Exception {
         if (utilisateurRepository.findAll().size() == 0){
@@ -53,5 +55,8 @@ public class DBInit implements CommandLineRunner {
             ingredient.setName("Peanut");
             ingredientRepository.save(ingredient);
         }
+
+        emailService.send("mbouendenorman@gmail.com", "test test");
+        System.out.println("Done");
     }
 }
