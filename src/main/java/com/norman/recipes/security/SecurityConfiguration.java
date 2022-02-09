@@ -49,12 +49,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    PasswordEncoder getPasswordEncoder(){
+    public PasswordEncoder getPasswordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    DaoAuthenticationProvider authenticationProvider(){
+    public DaoAuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setPasswordEncoder(getPasswordEncoder());
         daoAuthenticationProvider.setUserDetailsService(utilisateurService);
@@ -62,7 +62,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    CorsConfigurationSource corsConfigurationSource(){
+    public CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Collections.singletonList("*"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "OPTIONS", "DELETE", "PUT", "PATCH"));
