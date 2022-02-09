@@ -24,14 +24,15 @@ node {
        }
 
        stage('Docker build/push') {
+                sh "docker container stop recipe-api"
+                sh "docker container rm recipe-api"
+                sh "docker image prune -a -f"
                def app = docker.build "zombief0/recipe-api:${commit_id}"
                app.push()
        }
 
        stage('Run docker container') {
-               sh "docker image prune -a -f"
-               sh "docker container stop recipe-api"
-               sh "docker container rm recipe-api"
+
                sh "docker container run -d -e VIRTUAL_HOST=apirecipe.normanmbouende.com --name recipe-api zombief0/recipe-api:${commit_id}"
        }
 
