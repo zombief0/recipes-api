@@ -34,8 +34,8 @@ public class SwaggerConfig {
                 "Backend de l'app Recette",
                 "0.0.1",
                 "",
-                new Contact("Arthur", "", ""),
-                "Propriété d'Arthur", "", Collections.emptyList()
+                new Contact("Norman Mbouende", "", ""),
+                "Propriété de Norman", "", Collections.emptyList()
         );
     }
 
