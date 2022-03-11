@@ -19,7 +19,7 @@ public class FileSystemStorageRestController {
 
     @PostMapping
     public ResponseEntity<?> upload(
-            MultipartFile file) throws IOException {
+           @RequestPart MultipartFile file) throws IOException {
         return fileSystemStorageService.store(file);
     }
 

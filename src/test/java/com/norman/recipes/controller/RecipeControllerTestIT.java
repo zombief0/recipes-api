@@ -1,10 +1,7 @@
 package com.norman.recipes.controller;
 
-import com.norman.recipes.domain.entities.Ingredient;
-import com.norman.recipes.domain.entities.Recipe;
-import com.norman.recipes.domain.entities.Utilisateur;
 import com.norman.recipes.service.RecipeService;
-import com.norman.recipes.service.UtilisateurService;
+import com.norman.recipes.security.DetailsUtilisateurService;
 import com.norman.recipes.service.dto.IngredientDto;
 import com.norman.recipes.service.dto.RecipeDetail;
 import com.norman.recipes.service.dto.RecipeDto;
@@ -34,7 +31,7 @@ class RecipeControllerTestIT {
     private MockMvc mockMvc;
 
     @MockBean
-    private UtilisateurService utilisateurService;
+    private DetailsUtilisateurService utilisateurService;
 
     @MockBean
     private RecipeService recipeService;

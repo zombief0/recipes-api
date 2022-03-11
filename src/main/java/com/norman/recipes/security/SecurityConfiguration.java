@@ -1,6 +1,5 @@
 package com.norman.recipes.security;
 
-import com.norman.recipes.service.UtilisateurService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -23,7 +22,7 @@ import java.util.Collections;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @RequiredArgsConstructor
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-    private final UtilisateurService utilisateurService;
+    private final DetailsUtilisateurService utilisateurService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

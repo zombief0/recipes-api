@@ -48,6 +48,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         Date expiredDate = new Date(System.currentTimeMillis() + SecurityProperties.EXPIRES_IN);
         String token = JWT.create()
                 .withSubject(utilisateur.getUsername())
+                .withClaim("role", "ROLE_" + utilisateur.getRole())
                 .withExpiresAt(expiredDate).sign(Algorithm.HMAC512(SecurityProperties.SECRET));
         AuthResponse authResponse = new AuthResponse(token,
                 SecurityProperties.EXPIRES_IN,

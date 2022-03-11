@@ -1,4 +1,4 @@
-package com.norman.recipes.service;
+package com.norman.recipes.security;
 
 import com.norman.recipes.domain.entities.Utilisateur;
 import com.norman.recipes.domain.repositories.UtilisateurRepository;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UtilisateurServiceImpl implements UtilisateurService {
+public class UtilisateurServiceImpl implements DetailsUtilisateurService {
     private final UtilisateurRepository utilisateurRepository;
 
     @Override
